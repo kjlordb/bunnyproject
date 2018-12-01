@@ -18,6 +18,7 @@ class MessagesController extends Controller
             'name' => 'required',
             'email' => 'required'
         ]);
+        // comment
 
         
         return redirect()->back();
