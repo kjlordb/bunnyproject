@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- @include('inc.messages') --}}
     <h1 for="name">Contact</h1>
     <form action="{{route('submit')}}" method="POST">
         @csrf
@@ -15,7 +16,12 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" class="form-control">
+            <input type="text" id="email" name="email" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}">
+            @if ($errors->has('email'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="mess">Message</label>
