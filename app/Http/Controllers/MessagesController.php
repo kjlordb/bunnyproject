@@ -29,7 +29,7 @@ class MessagesController extends Controller
         $message->save();
         
         //Redirect
-        return redirect('/')->with('success', 'Message Sent');
+        return redirect('/contact')->with('success', 'Message Sent');
         
 
 
@@ -39,6 +39,13 @@ class MessagesController extends Controller
         //     return 123;
         // }
         // return dd($request->all());
+    }
+
+    public function getMessages()
+    {
+        $messages = Message::all();
+
+        return view('messages')->with('messages', $messages);
     }
     /**
      * Display a listing of the resource.
